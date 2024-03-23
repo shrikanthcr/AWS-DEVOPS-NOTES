@@ -111,3 +111,14 @@ Add collabrator = To add persons to my repository
 -Settings
 -Collabrators
 -Add people
+
+
+git token 
+-In right side of the git hub 
+-setting
+-Developer Settings
+-Personal access tokens
+-tokens (classic)
+-Generate new tokens
+-select permissions
+-create token
