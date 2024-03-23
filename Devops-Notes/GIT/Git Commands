@@ -42,3 +42,72 @@ git remote rm origin =It removes the github link
 git push --set-upstream origin first-branch
 
 git pull origin branch-name
+
+GIT MERGING:
+If you want to merge branch from master to main 
+1st you need to checkout main
+git checkout main
+git merge master
+
+Git Rebase:
+git rebase -i HEAD~3  =3 represent the no of commits, By using this command we can join 3 commmits id to single commit id and we can drop commit.
+git rebase --abort  =To come out of the rebase 
+rm -fr .git/rebase-merge
+
+pick <commit> <commit message>
+squash <commit> <commit message>
+
+git rebase --edit-todo =It is a editor tool for rebase
+
+git tag demo1 commit id
+git tag demo2 commit id
+gi tag
+demo1
+demo2
+
+git checkout demo1
+git checkout demo1
+
+git diff 2 commit id = It findout the difference between 2 commits
+git cherry-pick commit id =It moves commit from 1 branch to another branch
+
+Let us assume we have 2 branchs
+In 1st branch we have 4 commit
+In second branch we have 2 commit
+we need to move one particular commit id out of 4 commit id in 1st branch
+copy particular commit id in 1st branch
+
+git checkout - = It switch to recent checkout branch 
+swift to 2nd branch
+execute git cherry-pick commit id =in second branch
+that commit id will appear in second branch
+
+git diff filename  = It shows changes made in file
+*** If you add one line in that file , It will shows in Green colour.
+*** If you remove one line in that file, It will shows in Red colour.
+
+git revert commit id = It revert back to previous commit.
+*** In this we have to revert one by one only 
+*** example We have 4 commit, 1st we revert 4th commit than 3rd commit then 2nd commit then 1st commit.
+
+git reset commit id = In this we can skip commit id.
+*** Example: We have 4 commit , In this we can skip  first two commit, directly  we can revert 3rd commit.
+
+
+git stash = It will copy the file from branch 1 ,& It will paste that file in 2nd branch
+*** In this 1st we copy file in branch 1 by using git stash , then we switch to 2nd branch using git checkout - ,& execute git stash apply
+ that file will present in 2nd branch.
+
+git commit --ammend -m "new commit message"  = In this we can rename the commit message
+
+git branch protection = we can restrict push to our main brach.
+-Repository  
+-settings  
+-branches  
+-add branch protection rule  
+-branch name
+
+Add collabrator = To add persons to my repository
+-Settings
+-Collabrators
+-Add people
