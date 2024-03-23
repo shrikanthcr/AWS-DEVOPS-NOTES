@@ -1,0 +1,114 @@
+Date:11-03-2024
+What is Git?
+1)Git is a distributed version control system , which can track changes to a file & revert back to any particular changes.
+2)Source Code Management.
+
+Advantages of Git:
+1)Free, Open Source, Super Fast and Scalable
+2)Easy to Learn and Implement.
+3)Useful for both programmers and non- programmers
+4)Multiple Users Working Together.
+5)Maintenance Friendly.
+6)Large project can be handled efficiently.
+
+Disadvantages of Git:
+1)Complexity: Steep learning curve due to technical terminology and commands.
+2)Risk of Data Loss: Accidental overwriting or deletion of changes.
+3)Merge Conflicts: Challenges in resolving conflicts when merging changes.
+4)Command-Line Dependency: Primarily relies on command-line interface for operations.
+5)Large Repository Sizes: Repositories can become large and resource-intensive.
+6)Performance Issues: Operations may become slow with large repositories.
+7)Lack of File Locking: No native file locking, leading to conflicts with concurrent edits.
+8)Limited Support for Large Files: Handling large binary files can be inefficient.
+9)Dependency on Central Server: Reliance on a central server introduces risks.
+
+Git Commands:
+
+1)git help
+2)git init
+3)git status
+
+Staging & Committing Files:
+Git Workflow
+
+local 
+a)Working Area ----git add
+b)Staging Area ----git commit -m "message"
+c)Git Repository----git push
+
+Remote
+Github
+
+Commands:
+git add filename
+git add .
+git add *
+git rm --cached <filename>
+git reset HEAD <filename>  = It return from staging area to working area. (unstage)
+git checkout --filename =To discard the changes in working directory
+git commit -m "message
+git log --To see the commit history
+
+Moving & Removing Files:
+git rm filename
+git mv /source location/ /destination location/
+
+Git Branch:
+git branch  = To see the present branch
+git branch my-first-branch  =To create the new branch.
+git checkout my-first-branch =To set the present working branch
+git checkout -b my-second-branch =TO create & switched to present working branch.
+git branch -D branch name  = To delete branch.
+
+How to merge your code in Git?
+If i want to merge my-first-branch with master branch
+1st i want to checkout to master
+git checkout master
+in master =  git merge my-first-branch
+
+Git Merge:
+1st checkout to 1st branch i.e my-first-branch
+add 2 lines in files
+git status = it shows in red colour with modified name
+git add .
+git status = it shows in green colour
+git commit -m "updating quotes"
+
+git checkout second branch 
+add 2 lines in files
+git status
+git add .
+git status
+git commit -m "updating quotes in second branch"
+
+git checkout master
+git merge my-first-branch
+git merge second-branch
+
+Git Conflict:
+git checkout my-first-branch
+In my-first-branch  i added new line i.e In master branch i added new line
+git status =it shows in red colour with moified name.
+git add .
+git commit -m "Added new line"
+
+git checkout master
+in same file i added another line  with different format i.e said by In master branch i added new line
+git status
+git add .
+git commit -m "Adding a line in master branch" 
+git status
+
+git merge my-first-branch
+it through me an conflict error auto-merging
+in file we have to  remove 
+
+<<<<<head
+-Said by swami vivekananda
+========
+-swami vivekananda
+ >>>my-first branch names
+
+
+-Said by swami vivekananda
+-swami vivekananda
