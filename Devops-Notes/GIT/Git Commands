@@ -1,1 +1,17 @@
-hi
+GIT COMMANDS:
+
+git init
+git config --global user.email "shrikanthcr888@gmail.com"
+git config --global user.name "Shrikanth C R"
+git config --global --list         =To see the configuration details
+user.email=shrikanthcr888@gmail.com
+user.name=Shrikanth C R
+
+git clone https://github.com/shrikanthcr/Simtekway-Projects.git  =It downloads all the files and folders from git hub to local.
+
+git branch = It show the total available branches
+git branch branch-name = It create the new branch
+git checkout branch-name = It switched to the particular branch
+git checkout -b branch-name =It create the new branch & navigate to this branch
+git branch -D branch-name =To delete the branch
+
