@@ -1,0 +1,38 @@
+Git Push Error:
+Problem 1:
+C:\Users\Dell\Desktop\AWS-DEVOPS NOTES>git push AWS-DEVOPS-NOTES AWS-DEVOPS-BRANCH
+To https://github.com/shrikanthcr/AWS-DEVOPS-NOTES.git
+ ! [rejected]        AWS-DEVOPS-BRANCH -> AWS-DEVOPS-BRANCH (fetch first)
+error: failed to push some refs to 'https://github.com/shrikanthcr/AWS-DEVOPS-NOTES.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+Solution:
+**Git remote add AWS-DEVOPS-NOTES https://github.com/shrikanthcr/AWS-DEVOPS-NOTES.git
+                                                                                                               Origin name                   branch name
+C:\Users\Dell\Desktop\AWS-DEVOPS NOTES>git pull --rebase AWS-DEVOPS-NOTES AWS-DEVOPS-BRANCH
+remote: Enumerating objects: 30, done.
+remote: Counting objects: 100% (30/30), done.
+remote: Compressing objects: 100% (24/24), done.
+remote: Total 30 (delta 8), reused 4 (delta 0), pack-reused 0
+Unpacking objects: 100% (30/30), 9.12 KiB | 23.00 KiB/s, done.
+From https://github.com/shrikanthcr/AWS-DEVOPS-NOTES
+ * branch            AWS-DEVOPS-BRANCH -> FETCH_HEAD
+ * [new branch]      AWS-DEVOPS-BRANCH -> AWS-DEVOPS-NOTES/AWS-DEVOPS-BRANCH
+Successfully rebased and updated refs/heads/AWS-DEVOPS-BRANCH.
+
+C:\Users\Dell\Desktop\AWS-DEVOPS NOTES>git push -u AWS-DEVOPS-NOTES AWS-DEVOPS-BRANCH
+Enumerating objects: 178, done.
+Counting objects: 100% (178/178), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (168/168), done.
+Writing objects: 100% (176/176), 992.49 KiB | 844.00 KiB/s, done.
+Total 176 (delta 15), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (15/15), completed with 1 local object.
+To https://github.com/shrikanthcr/AWS-DEVOPS-NOTES.git
+   fd94f57..ff0ad48  AWS-DEVOPS-BRANCH -> AWS-DEVOPS-BRANCH
+branch 'AWS-DEVOPS-BRANCH' set up to track 'AWS-DEVOPS-NOTES/AWS-DEVOPS-BRANCH'.
+
+
