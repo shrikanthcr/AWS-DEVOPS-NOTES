@@ -1,0 +1,98 @@
+1)Create one ec2 server , Name it as Prometheus Server.
+2)Connect to mobaxterm by using prometheus public ip.
+3)install docker 
+commands:
+yum install docker -y
+systemctl start docker
+systemctl enable docker
+syatemctl status docker
+
+4) create one folder inside the prometheus server , Name it as prometheus.
+command: mkdir prometheus
+Entry to prometheus folder
+command: cd prometheus
+
+5) create vi prometheus.yml file 
+command: vi prometheus.yaml
+
+# my global config
+global:
+  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+
+# Here it's Prometheus itself.
+scrape_configs:
+
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+
+6) Install prometheus by using docker command.
+Command: docker run -d -p 9090:9090 -v /home/ec2-user/prometheus:/etc/prometheus prom/prometheus
+
+docker images = It will show the present available images.
+docker ps -a = It will show the all running & available containers.
+
+7) we can access our prometheus page in google by using public ip of prometheus server (3.149.246.203:9090)
+- By default prometheus works on 9090 port.
+
+8) Go to prometheus Page 
+- Go to status
+- Go to Target
+- Now we can see the ec2 machine status with up or down.
+- It shows green colour when it is up.
+- It shows red colour , when it is down.
+
+9) Connect node servers with prometheus server.
+
+
+- Now we are adding machines to prometheus server.
+- login to the Jenkins server -- server name.
+- Install Docker 
+- commands: 
+yum install docker -y
+systemctl start docker
+systemctl enable docker
+syatemctl status docker
+
+- run node exporter command in slave machine (jenkins server) to connect with prometheus server.
+- command : docker run -d -p 9100:9100 quay.io/prometheus/node-exporter:v1.2.2
+- By default node exporter works on 9100 port (3.14.197.35:9100)
+- Now we can access our node exporter page in google by using public ip of slave machine (3.14.197.35:9100).
+ 
+docker ps -a
+
+10)go to the prometheus server 
+- open vi prometheus.yml file
+command : vi prometheus.yml
+
+# my global config
+global:
+  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+
+# Here it's Prometheus itself.
+scrape_configs:
+
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+  
+  - job_name: "Jenkins-Server"
+    static_configs:
+      - targets: ["3.14.197.35:9090"]
+
+11) Restart Prometheus container.
+command: docker restart container-id
+
+12) Go to Prometheus page by using public ip of prometheus (3.149.246.203:9090)
+- Go to status.
+- Go to target.
+- Refresh the Page.
+- Now we can see the slave server status in prometheus GUI.
+
+
+
+
+
+
+
+

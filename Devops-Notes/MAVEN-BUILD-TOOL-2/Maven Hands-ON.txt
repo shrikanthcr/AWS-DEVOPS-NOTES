@@ -1,0 +1,52 @@
+MAVEN TOOL = BUILD TOOL
+CREATE ONE AMAZON LINUX SERVER IN AWS CONSOLE
+
+USER_DATA
+#!/bin/bash
+sudo yum update -y
+sudo yum install git -y
+sudo yum install java-11 -y
+sudo yum install maven -y
+
+IN MOBAXTERM 
+sudo su
+git --version 
+mvn --version
+java --version 
+
+To create pom.xml file by using below command
+mvn archetype:generate
+
+Group Id:www.whatsapp.com
+Artifacts Id:whatsapp
+Snapshot:1.0.0
+Package: jar
+
+ls
+whatsapp (Artifact Id)
+We have to enter to artifact id i.e whatsapp
+pwd 
+cd whatsapp
+ls
+pom.xml
+ now iam inside the artifactid i.e whatsapp 
+mv pom.xml /home/ec2-user/
+cd ..
+ls
+whatsapp , pom.xml
+
+mvn clean package or mvn clean install
+ls
+target
+cd target
+whatsapp-1.0.0.jar
+
+Remove Commands:
+yum remove git -y
+yum remove maven -y
+yum remove java -y
+
+
+
+
+

@@ -1,0 +1,42 @@
+1) Create one ec2 server, & Name it as Grafanna.
+2) By using Grafana Public IP login in to Grafana server
+3) Install Docker
+commands:
+yum install docker -y
+systemctl start docker
+systemctl enable docker
+syatemctl status docker
+
+4)Install Grafanna by using Docker hub.
+command: docker run -d --name=grafana -p 3000:3000 grafana/grafana
+
+docker ps -a 
+
+5) Now we can able to access grafanna in google using grafana public ip (3.14.197.35:3000)
+- By default grafanna works on 3000 port.
+- User Id = admin
+- Password = admin
+- After Login It will tell to create new password 
+- New Pasword: admin
+- Conform New Password : admin
+
+6) In home page , We have to click on Add data resource option
+- Type : Prometheus
+- Click on Prometheus
+- Name : Prometheus-1
+- Prometheus Server URL : http://3.149.246.203:9090/
+- Save & Test
+
+7) Go to Dashboard
+- Click on New
+- Click on New Folder.
+- Name it as Grafanna Dashboard.
+- Click on New
+- Click on Import 
+- File & Import Dashboard : Go to Google
+- Search :Node exporter for grafanna 
+- Copy Dashboard ID
+- paste in File & Import Dashboard - Click on load
+- In Folder - Select Grafanna Dashboard
+- select Prometheus in Prometheus Option
+- Import 
