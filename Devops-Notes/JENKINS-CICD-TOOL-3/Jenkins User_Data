@@ -1,6 +1,9 @@
 #!/bin/bash
 sudo su -
 yum update -y
+yum install git -y
+yum install maven -y
+yum install java-17 -y
 yum install docker -y
 systemctl start docker
 systemctl enable docker
