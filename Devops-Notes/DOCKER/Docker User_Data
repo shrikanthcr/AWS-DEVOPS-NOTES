@@ -4,3 +4,12 @@ yum update -y
 yum install docker -y
 systemctl start docker
 systemctl enable docker
+
+
+
+To remove all images at one shot
+docker image prune -a -y
+To remove all containers at one shot
+docker system prune -a -y
+To remove all the volumes at one shot
+docker volume prune 
