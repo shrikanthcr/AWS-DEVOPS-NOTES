@@ -1,0 +1,29 @@
+pipeline {
+     agent {
+        label 'slave-1'
+            }
+
+    stages {
+        stage('Git') {
+            steps {
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/shrikanthcr/Simtekway-Projects.git'
+            }
+        }
+        stage('Maven Build') {
+            steps {
+                sh "mvn clean install"
+            }
+        }
+        stage('Docker Build & Push') {
+            steps {
+                script{
+                    withDockerRegistry(credentialsId: '4e420bfb-0fad-4d1a-9a8d-55f317d8505e') {
+                        sh "docker build -t shrikanthcr/httpdrepo:tag-httpd ."
+                        sh "docker push shrikanthcr/httpdrepo:tag-httpd"
+                       
+}
+                }
+            }
+        }
+    }
+}

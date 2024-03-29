@@ -1,0 +1,8 @@
+1. Create User:
+sudo useradd [OPTIONS] username
+EXAMPLE
+sudo useradd newuser
+2. Modify User (Change User's Information):
+sudo usermod [OPTIONS] username
+EXAMPLE:
+sudo usermod -d /new/home/directory username
