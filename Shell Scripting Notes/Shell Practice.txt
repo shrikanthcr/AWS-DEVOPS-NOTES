@@ -1,0 +1,52 @@
+Date:28/03/2024 Day:Thursday
+----------------------------
+Learning Shell Script:
+----------------------
+Scenerio-1 : Login through username & password to application without restriction:
+----------------------------------------------------------------------------------
+
+#!/bin/bash
+echo "Enter username"
+read username
+echo "Enter password"
+read password
+
+if [ $username ] && [ $password]; then
+    echo "valid user"
+fi
+
+Scenerio-2 : Login through username and password to application with restriction:
+---------------------------------------------------------------------------------
+
+#!/bin/bash
+
+echo "Enter username"
+read username
+echo "Enter password"
+read password
+
+if [ $username == shri ] && [ $password == shri@123 ]; then
+   echo "valid user"
+else 
+   echo "invalid user"
+fi
+
+Scenerio-3 : Login through username & password to application with high level restriction:
+------------------------------------------------------------------------------------------
+
+#!/bin/bash
+
+echo "Enter username"
+read username
+echo "Enter password"
+read password
+
+if [ $username == shri ] && [ $password == shri@123]; then
+   echo "valid user"
+elif [ $username != shrikanth ] && [ $password == shri@123 ]; then
+   echo "invalid username"
+elif [ $username == shri ] && [ $password != shrikanth@123]; then
+   echo "invalid password"
+else 
+   echo "invalid username name and password"
+fi

@@ -1,0 +1,515 @@
+SHELL SCRIPT:
+
+Shell: 
+	*It is command-line interface (CLI) that interprets and executes user commands. It acts as an intermediary between the user and the operating system
+	*Any file where you put a series of linux commands, that can be called as Shell Script. 
+	*Shell script is used to automate the manual and repetitive tasks.
+	* it will execute as line by line
+
+
+Note: Shell interacts as a interface between user and kernal(linux OS)
+
+Shebang:
+	#!/bin/bash  -- we call it as shebang.
+	It invokes bash shell. If we don't write this line, it uses default shell.
+
+To check the types of shells available:
+	cat /etc/shells
+	Bash shell is default shell
+
+To check default shell:
+	echo $SHELL
+---------------------------------------------------------------------------------
+Example:
+1.Sample.sh
+________________
+#!/bin/bash
+echo "Hi, this is Raj"
+ls -lt
+pwd
+df -h
+date
+uname -a
+_________________
+To execute this, 
+./Sample.sh
+_________________
+---------------------------------------------------------------------------------
+
+How do you read arguments inside the shell script?
+$1 - 1st argument
+$2 - 2nd argument
+$3 - 3rd argument
+.
+.
+.
+.
+.
+$n 
+-----------------------------------------------------------------------------------
+
+Example:
+
+1.Pass_arguments.sh         -- pass arguments from outside the script
+
+#!/bin/bash
+
+echo "this is $1"
+
+echo "I am from $2"
+************************************************************
+To execute this, 
+./Pass_arguments.sh raj India
+************************************************************
+
+2.Variables.sh
+
+#!/bin/bash
+
+a=`pwd`
+b=`ls -lrt`
+c=`echo "I am from India"`
+
+echo $a
+echo $b
+echo $c
+************************************************************
+
+3.read_name.sh
+
+#!/bin/bash
+
+echo "enter your name"
+read name
+echo hello $name
+************************************************************
+Special Characters:
+==================
+These have special meaning to a shell. They are given below.
+
+$0 -- name of the script/file/shell curently being executed  (echo "The name of this file: $0)
+$# -- the total number of arguments passed to a script
+$* -- All arguments passed to a script
+$$ -- process id of the current running process
+$? -- status of the last executed command. Zero(0) means success & non-zero means failure.
+************************************************************
+
+Numerics:
+========
+-eq -- equals 
+-gt -- greater than 
+-lt -- lesser than 
+-ge -- greater than or equal to 
+-le -- lesser than or equal to 
+-ne -- not equal to 
+
+************************************************************
+
+Add two numbers.
+
+#!/bin/bash
+sum=`expr $1 + $2`
+echo "$sum"
+
+*************************************
+Expressions:
+	expr 8 + 2  		: Addition
+	expr 8 - 2 			: Subtraction
+	expr 8 / 2			: Division
+	expr 8 \* 2			: Multiplication
+	expr 8 % 2			: remainder
+	
+************************************************************
+************************************************************
+
+Conditional statement:
+
+if condition: 
+	"if" statement checks a condition and executes a block of code if the condition is true.
+Syntax:
+
+	if [ condition ]
+	then
+		 statement
+	fi
+************************************************************
+if-else condition:
+	"if-else" statement allows you to specify two blocks of code: one to be executed if the condition is true, and another to be executed if the condition is false.
+Syntax:
+
+	if [ condition ]
+	then 
+		statement1
+	else
+		statement2
+	fi
+
+or	
+	if [ condition ];then 
+		statement1
+	else
+		statement2
+	fi
+************************************************************
+if-else-if Condition:
+	When you have multiple conditions to check, you can use an "if-elif-else" statement
+Syntax:
+
+	if [ condition1 ]
+	then
+		statement1
+	elif [ condition2 ]
+	then
+		statement2
+	elif [ condition3 ]
+	then 
+		statement3
+	else
+		statment4
+	fi
+************************************************************
+Examples:
+
+1.check5.sh
+
+#!/bin/bash
+
+if [ $1 -eq 5 ]; then
+        echo "$1 is five"
+else
+        echo "$1 is not five"
+fi
+*************************************
+
+2. big_2no.sh
+
+#!/bin/bash
+
+if [ $1 -gt $2 ]; then
+        echo "$1 is big"
+else
+        echo "$2 is big"
+fi
+*************************************
+
+3. Restict the script to pass only 2 numbers:
+
+#!/bin/bash
+
+if [ $# -ne 2 ]; then
+        echo "pass only 2 numbers"
+exit 1
+fi
+
+if [ $1 -gt $2 ]; then
+        echo "$1 is big"
+else
+        echo "$2 is big"
+fi
+*************************************
+4. big_3no.sh  -- to find biggest of 3 numbers
+
+#!/bin/bash
+
+if [ $1 -gt $2 ] && [ $1 -gt $3 ]; then
+        echo "$1 is big"
+elif [ $2 -gt $3 ]; then
+        echo "$2 is big"
+else
+        echo "$3 is big"
+fi
+
+*************************************
+
+5. Find whether the given name is a file or directory.
+
+#!/bin/bash
+
+echo "enter the name"
+read name
+
+if [ -f $name ]; then
+       echo "$name is a file"
+elif [ -d $name ]; then
+ echo "$name is a dir"
+else
+       echo "$name does not exist"
+fi
+
+*************************************
+
+5.a 
+#!/bin/bash
+
+echo "enter the directory name"
+read name
+
+if [ -d /root/ec2-user/vinay ]; then
+       echo "Directory exist"
+else
+       mkdir /root/ec2-user/vinay
+	   echo "$name does not exist, created new"
+fi
+*************************************
+
+6. Using And operator
+
+#!/bin/bash
+
+echo "Enter username"
+read username
+echo "Enter password"
+read password
+
+if [ $username == "admin" ] && [ $password == "secret" ]; then
+	echo "valid user"
+else
+	echo "invalid user"
+fi
+************************************* 
+
+7. Using OR operator
+
+#!/bin/bash
+
+echo "Enter username"
+read student
+
+if [ $student == "Ram" ] || [ $student == "Raj" ]
+Then 
+    echo " student from our school"
+else 
+	echo "Not a student from our school"
+fi
+	
+************************************* 
+8.Find Even/odd number 
+
+#!/bin/bash
+
+echo -n "Enter a number:"
+read n
+if [ `expr $n % 2` -eq 0 ]
+then
+	echo "$n is even"
+else
+	echo "$n is Odd"
+fi
+*************************************
+	
+Note:
+1. To set script as success or 0,   run the script like below
+	./script.sh || true 
+	
+2. ` = backtick
+3. To convert dos to unix file format  :   
+	dos2unix <filename>
+************************************************************
+************************************************************
+
+While Loop: It is used to run a set of commands repeatedly until some condition occurs.
+
+Syntax:
+
+	while [ condition ]
+	do 
+	   statement
+	done
+
+*************************************
+1.How to print entered number to 1.
+
+#!/bin/bash
+n=$1
+while [ $n -ge 1 ]
+do
+echo "$n"
+n=`expr $n - 1`
+done
+
+*************************************
+
+2. Find the factorial of a given number
+
+#!/bin/bash
+
+n=$1
+f=1
+
+while [ $n -gt 0 ]
+do
+        f=`expr $f \* $n`
+        n=`expr $n - 1`
+done
+echo "factorial is $f"
+
+*************************************
+Note:
+1. factorial ?
+	4!=4*3*2*1
+
+*******************************************************************
+*******************************************************************
+
+WHILE READ LINE: It is used to read each line in a file
+
+Syntax:
+
+	while read line
+	do 
+	   echo $line
+	done < file
+
+*************************************
+1.Count no of words in each line of a file 
+
+#!/bin/bash
+
+file=$1
+count=1
+
+
+while read line
+do
+        words=`echo $line | wc -w`
+        echo "$count:$words"
+        count=`expr $count + 1`
+done < $file
+
+*******************************************************************
+*******************************************************************
+FOR LOOP:
+========
+syntax:
+
+	for i in value1 value2 value3 value4
+	do
+	  echo $i
+	done
+*************************************
+
+1. add 2 4 6 8 10
+
+#!/bin/bash
+
+sum=0
+for i in 2 4 6 8 10
+do
+        sum=`expr $sum + $i`
+done
+echo $sum
+*************************************
+2. Iterate over a range of numbers
+
+#!/bin/bash
+
+echo "Example 1: Iterate over a range of numbers"
+for i in {1..5}; do
+    echo "Number $i"
+done
+
+*************************************
+3. 
+#!/bin/bash
+
+echo "Example 2: Iterate over elements in an array"
+my_array=("apple" "banana" "cherry" "date")
+for fruit in "${my_array[@]}"; do
+    echo "Fruit: $fruit"
+done
+
+*******************************************************************
+*******************************************************************
+
+CRONTAB:
+=========
+
+*           *            *               *                       *
+Min        hours        Date            month                 Day of the week
+(0-59 min)  (0-23hrs)  (1-31 days)     (1-12)                 (00-06) (0-sunday ; 06-saturday)
+
+Commands:
+
+crontab -e   --> to edit the crontab job
+crontab -l   --> to view the crontab jobs
+
+9 every 
+
+1. Run script at everyday 9am
+
+00 09 * * *  /script path
+
+2. Run script at 10 am, 10th Jan 
+
+00 10 10 01 * /path to the script
+
+
+3. Run script at 1pm every friday
+
+00 13 * * 05 /path to the script
+
+4. Run script at 1pm every friday and saturday
+
+00 13 * * 05,06 /path to the script
+
+5.  Run script at 1pm every monday to saturday
+00 13 * * 01-06 /path to the script
+
+6. Run script for coming monday to saturday
+00 13 10-15 01 01-06 /path to the script
+
+7. Run script every 30 min
+*/30 * * * * /path to the script
+
+8. Run script at everyday at 6:30 pm
+30 18 * * *  /path to the script
+
+9. Run script every 2 days
+* * */2 * * /path to the script
+10. run script every year
+00 00 01 01 * /path to the script
+
+Note: 
+1) Crontab will always schedule scripts for minutes and will not schedule for seconds.
+2) If you specify all * then script will run every minute
+3) to install crontab : sudo yum install cronie / sudo apt-get install cron
+4) # : To add comments in scripts
+
+***********************************************
+1. To add variables based on env:
+
+#!/bin/bash
+ENV=$1
+case  ${ENV}  in
+	qa)       
+		echo "Its QA env"
+		GATEWAYURL="http://hr-qa-gateway.us.com:8001"
+		;;
+	sandbox)
+		echo "Its sandbox env"
+		GATEWAYURL="http://hr-sanbox-gateway.us.com:8001"
+		;;            
+	uat)       
+		echo "Its uat env"
+		GATEWAYURL="http://hr-uat-gateway.us.com:8001"
+		;;
+	prod)       
+		echo "Its prod env"
+		GATEWAYURL="http://hr-prod-gateway.us.com:8001"
+		;;
+    *)
+		echo "script executed by unrecoginzed env"
+		exit 1
+		;;					
+esac 
+
+{
+echo $GATEWAYURL
+}
+
+*********************************************************
+
+Set -e : instruct the shell to exit immediately if any command or pipeline return a non-zero exit status
+
+*********************************************************
+
