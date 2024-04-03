@@ -1,0 +1,23 @@
+pipeline {
+    agent {
+        label 'slave-1'
+    }
+
+    stages {
+        stage('Git - Clone the Code') {
+            steps {
+                git branch: 'AWS-DEVOPS-BRANCH', changelog: false, poll: false, url: 'https://github.com/shrikanthcr/AWS-DEVOPS-STUDY-MATERIALS.git'
+            }
+        }
+        stage('Maven- Build the Code') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+        stage('Deploy to Nexus') {
+            steps {
+                nexusArtifactUploader artifacts: [[artifactId: 'facebook', classifier: '', file: '/home/ec2-user/workspace/nexus pipeline/target/facebook-1.0.0.jar', type: 'jar']], credentialsId: 'nexus-login-id', groupId: 'facebook-lite', nexusUrl: '13.201.128.18:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'madhu-repo', version: '1.0.0'
+            }
+        }
+    }
+}
