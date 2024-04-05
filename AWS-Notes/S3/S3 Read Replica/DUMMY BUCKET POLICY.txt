@@ -1,0 +1,36 @@
+{
+    "Version": "2012-10-17",
+    "Id": "",
+    "Statement": [
+        {
+            "Sid": "Object Level Permissions",
+            "Effect": "Allow",
+            "Principal": {
+                # SOURCE BUCKET IAM ARN
+                "AWS": "arn:aws:iam::709398145454:role/service-role/s3crr_role_for_source-bucket-01-one"
+            },
+            "Action": [
+                "s3:ReplicateObject",
+                "s3:ReplicateDelete"
+            ],
+                                  # DESTINATION BUCKET NAME
+            "Resource": "arn:aws:s3:::bucket-one-new-one/*"
+        },
+        {
+            "Sid": "Bucket Level Permissions",
+            "Effect": "Allow",
+            "Principal": {
+                # SOURCE BUCKET IAM ARN
+                "AWS": "arn:aws:iam::709398145454:role/service-role/s3crr_role_for_source-bucket-01-one"
+            },
+            "Action": [
+                "s3:List*",
+                "s3:GetBucketVersioning",
+                "s3:PutBucketVersioning"
+            ],
+                                    # DESTINATION BUCKET NAME
+            "Resource": "arn:aws:s3:::bucket-one-new-one"
+        }
+
+    ]
+}
