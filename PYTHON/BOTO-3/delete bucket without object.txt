@@ -1,0 +1,15 @@
+import boto3
+
+# Replace 'your-unique-bucket-name' with the actual name of the bucket you want to delete
+bucket_name = 'demobucknewshri'
+
+# Create an S3 resource
+s3_resource = boto3.resource('s3')
+
+# Select the bucket
+bucket = s3_resource.Bucket(bucket_name)
+
+# Delete the bucket
+bucket.delete()
+
+print(f'Successfully deleted bucket: {bucket_name}')

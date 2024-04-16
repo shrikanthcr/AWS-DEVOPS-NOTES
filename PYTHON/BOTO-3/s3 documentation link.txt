@@ -1,0 +1,4 @@
+https://boto3.amazonaws.com/v1/documentation/api/latest/guide/migrations3.html#deleting-a-bucket
+
+
+https://awswithatiq.com/how-to-setup-s3-bucket-with-python-for-static-web-hosting-in-2022/#:~:text=import%20boto3%20%23%20Create%20an%20S3,'Suffix'%3A%20'index.

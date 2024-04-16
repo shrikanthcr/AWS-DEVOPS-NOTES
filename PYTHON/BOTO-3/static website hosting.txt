@@ -1,0 +1,17 @@
+import boto3
+
+# Replace 'your-bucket-name' with a unique name for your S3 bucket
+bucket_name = 'staticwebsitebucket01'
+
+s3 = boto3.client('s3')
+s3.create_bucket(Bucket='staticwebsitebucket01')
+
+website_configuration = {
+    'IndexDocument': {'Suffix': 'index.html'}
+}
+
+s3.put_bucket_website(Bucket='staticwebsitebucket01', WebsiteConfiguration=website_configuration)
+
+s3.upload_file(r'C:\Users\shrik\OneDrive\Desktop\s3_download\index.html' , 'staticwebsitebucket01' , 'index.html')
+
+s3.put_object_acl(Bucket='staticwebsitebucket01', Key='index.html', ACL='public-read')

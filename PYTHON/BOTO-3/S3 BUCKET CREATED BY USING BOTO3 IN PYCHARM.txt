@@ -1,0 +1,4 @@
+import boto3
+s3_client = boto3.client('s3')
+bucket_name = 's3-new-bucky-1010'
+s3_client.create_bucket(Bucket='s3-new-bucky-1010')

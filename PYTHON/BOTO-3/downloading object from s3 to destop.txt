@@ -1,0 +1,3 @@
+import boto3
+s3_client = boto3.client('s3')
+response = s3_client.download_file('mynewbuck1999', 'Speed Post Slip.pdf',r'C:\Users\shrik\OneDrive\Desktop\s3_download\Speed Post Slip.pdf')

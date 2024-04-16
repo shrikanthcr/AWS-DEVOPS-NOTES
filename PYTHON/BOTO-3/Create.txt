@@ -1,0 +1,5 @@
+import boto3
+s3_client = boto3.client('s3')
+bucket_name = 's3-new-bucky-1010'
+s3_client.create_bucket(Bucket='s3-new-bucky-1010')
+response = s3_client.upload_file(r'C:\Users\shrik\OneDrive\Desktop\New folder\abc.html' , 's3-new-1010', 'html2/abc.html')
