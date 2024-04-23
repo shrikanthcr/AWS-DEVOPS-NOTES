@@ -1,0 +1,666 @@
+Date : 22-04-2024            Day:Monday        Prepared By: Shrikanth C R
+-----------------           ------------       --------------------------
+SHELL SCRIPTING
+---------------
+What is Shell Scripting?
+Shell Scripting is nothing but file that contains sequence of commands.
+
+Examples:
+mkdir Scripts
+cd Scripts
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: This script is used for display the string in terminal
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+echo hello world 
+
+esc
+:wq
+chmod a+x Shell_scripting.sh
+
+Output: 
+hello world 
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: This script is used to create the files.
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+pwd
+ls
+touch file1 file2
+ls
+
+Output: 
+/root/scripts
+Shell_scripting.sh
+file1 file2 Shell_scripting.sh
+
+What is the Variable?
+Variable is nothing but the memory location where we can store the data.
+
+There are two types of varaibles in shell scripting:
+1)system variable : system variable defined by the operating system (os).
+ex1:
+echo $SHELL
+O/P:
+/bin/bash
+
+ex2:
+echo $HOME
+O/P:
+/home/ec2-user
+
+2)user defined variable: we wll defined variable while writing shell or in terminal.
+
+syntax:
+-------
+
+variable_name=value_of_variable
+NAME="RAM"
+
+If you see the system variable
+set -->use this set command 
+
+IN TERMINAL:
+------------
+EXAMPLE-1:
+---------
+NAME="RAM"
+echo $Name
+
+o/p:
+RAM
+
+EXAMPLE-2:
+---------
+var1=100
+echo $var1
+
+o/p:
+100
+
+EXAMPLE-3:
+---------
+readonly NAME
+echo $NAME
+
+O/P:
+RAM
+
+EXAMPLE-4:
+---------
+var1=200
+echo $var1
+
+o/p:
+200
+
+EXAMPLE-5:
+---------
+NAME="SHAM"
+echo $NAME
+
+O/P:
+-bash: NAME: readonly variable
+
+EXAMPLE-6:
+---------
+unset NAME
+
+O/P:
+-bash: unset: NAME: cannot unset: readonly variable 
+
+EXAMPLE-7:
+---------
+unset var1
+echo $var1
+
+o/p:
+It shows Empty
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: This is for install the httpd package
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+sudo yum update -y
+sudo yum install httpd -y
+sudo systemctl enable httpd
+sudo systemctl start httpd
+sudo systemctl status httpd
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: This is for install the vsftpd package
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+sudo yum update -y
+sudo yum install vsftpd -y
+sudo systemctl enable vsftpd 
+sudo systemctl start vsftpd 
+sudo systemctl status vsftpd 
+# vsftpd is a file server
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: This is for install the httpd package
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+package_name=httpd
+
+sudo yum update -y
+sudo yum install $package_name -y
+sudo systemctl enable $package_name 
+sudo systemctl start $package_name 
+sudo systemctl status $package_name 
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: This is for install the vsftpd package
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+package_name=vsftpd
+
+sudo yum update -y
+sudo yum install $package_name -y
+sudo systemctl enable $package_name 
+sudo systemctl start $package_name 
+sudo systemctl status $package_name 
+
+user_input:
+-----------
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: Display the user name
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+echo "please insert the user name"
+read name
+
+echo "Welcome to our shell script practice ${name}"
+
+o/p:
+please insert the user name
+RAJ
+Welcome to our shell script practice RAJ
+
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: TDisplay the user name,age,city
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+echo "please insert the user name"
+read name
+echo "please insert the age"
+read age
+echo "please insert the city_name"
+read city
+
+echo "Welcome to our shell script practice ${name} , ${name}, ${age}, ${city}"
+
+o/p:
+please insert the user name
+RAJ
+please insert the age
+30
+please insert the city_name
+Banglore
+Welcome to our shell script practice RAJ , RAJ, 30, Bnaglore
+
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: This is for install the ngnix package
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+echo "please enter the  package for install in server"
+read package_name
+
+sudo yum update -y
+sudo yum install $package_name -y
+sudo systemctl enable $package_name 
+sudo systemctl start $package_name 
+sudo systemctl status $package_name 
+
+o/p:
+please enter the  package for install in server
+ngnix or
+tree
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: This is for install the httpd package
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+read -p "Enter the package name " package_name
+
+sudo yum update -y
+sudo yum install $package_name -y
+sudo systemctl enable $package_name 
+sudo systemctl start $package_name 
+sudo systemctl status $package_name 
+
+o/p:
+Enter the package name httpd
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: Display the user name & visible password
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+read -p "Enter user name " name
+read -p "Enter user password " passwd
+
+echo "user name is ${name} and password is ${passwd}
+
+o/p:
+Enter user name Raj
+Enter user password 1234 (password is visible)
+user name is Raj and password is 1234
+
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: Display the user name & invisible password
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+read -p "Enter user name " name
+read -sp "Enter user password " passwd
+
+echo "user name is ${name} and password is ${passwd}
+
+o/p:
+Enter user name Raj
+Enter user password 1234 (password is invisible)
+user name is Raj and password is 1234
+
+Passing the Arguments:
+----------------------
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: Display the Hello World message
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+echo Hello World
+
+o/p:
+Hello World
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: Display the Hello World message
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+echo $1 $2
+
+While Exexuting Commands in Terminal:
+-------------------------------------
+./Shell_scripting.sh Hello World
+
+o/p:
+Hello World
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: Display the Hello World message
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+echo $1 $2
+
+While Exexuting Commands in Terminal:
+-------------------------------------
+./Shell_scripting.sh Hello World Ram
+
+o/p:
+Hello World
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: Display the Hello World message
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+echo $1 $2
+
+While Exexuting Commands in Terminal:
+-------------------------------------
+./Shell_scripting.sh Hello World Ram
+
+o/p:
+Hello World
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: Display the Hello World message
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+echo $1 $2 $3 $4 $5 $6 $7 $8 -----nth
+
+While Exexuting Commands in Terminal:
+-------------------------------------
+./Shell_scripting.sh Hello World Ram
+
+o/p:
+Hello World
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: Display the Hello World message
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+#Array shortcut $@  --array will store the multiple data in single variable.
+args=('$@")
+
+While Exexuting Commands in Terminal:
+-------------------------------------
+./Shell_scripting.sh Hello World Ram Sham 
+
+o/p:
+Hello World Ram Sham
+
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: Display the Hello World message
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+args=('$@")
+echo ${args[0]} ${args[1]}
+
+While Exexuting Commands in Terminal:
+-------------------------------------
+./Shell_scripting.sh Hello World Ram 
+
+o/p:
+Hello World 
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: Display the Hello World message
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+args=('$@")
+echo $@
+
+While Exexuting Commands in Terminal:
+-------------------------------------
+./Shell_scripting.sh Hello World Ram Sham
+
+o/p:
+Hello World Ram Sham
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: Display the Hello World message
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+echo $0 $1 $2
+
+While Exexuting Commands in Terminal:
+-------------------------------------
+./Shell_scripting.sh Hello World 
+
+o/p:
+./Shell_scripting.sh Hello World
+
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: Install git & maven package
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+sudo yum update -y
+sudo yum -y install $1 $2
+
+While Exexuting Commands in Terminal:
+-------------------------------------
+./Shell_scripting.sh git maven
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: Display the user name & age.
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+Name=$1
+age=$2
+
+echo "this is $Name"
+echo "$Name you are $age yaers old"
+
+o/p:
+this is Ram
+Ram you are 25 years old
+
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: Display the user name & age.
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+Name=$1
+age=$2
+
+echo "this is $Name"
+echo "$Name you are $age yaers old"
+echo $# 
+#It will print the number of arguments
+
+o/p:
+this is Ram
+Ram you are 25 years old
+2
+
+Conditional Statements:
+-----------------------
+Conditional Statements is used for evaluate the conditions.
+
+syntax:
+-------
+if:
+
+if [exp]
+then
+   statement
+fi
+
+if_else:
+if [experssion]
+then
+  statement
+else 
+  statement
+fi
+
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: if_else statement
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+marks=35
+if [ $marks == 35]
+then
+  echo "passed"
+fi
+
+o/p:
+passed
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: if_else statement
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+marks=34
+if [ $marks == 35]
+then
+  echo "passed"
+else
+  echo "failed"
+fi
+
+o/p:
+failed
+
+operators:
+----------
+== :equal to
+!= : not equal to
+&& : logic and
+-eq : Equality check
+-ne : inquality check
+-lt:less than
+-le : less than equal to
+-gt : greater than
+-ge : greater than equal to
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: if_else statement
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+marks=34
+if [ $marks != 35]
+then
+  echo "failed"
+fi
+
+o/p:
+failed
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: if_else statement
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+marks=54
+if [ $marks != 35]
+then
+  echo "failed"
+fi
+
+o/p:
+failed
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: if_else statement
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+marks=54
+if [ $marks -ge 35]
+then
+  echo "passed"
+else
+  echo "failed"
+fi
+
+o/p:
+passed
+
+vi Shell_scripting.sh
+---------------------
+#!/bin/bash
+# Author: Shrikanth C R
+# Discription: if_else statement
+# Date of created: 22/04/2024
+# Date of modify: 22/04/2024
+
+marks=34
+if [ $marks -ge 35]
+then
+  echo "passed"
+else
+  echo "failed"
+fi
+
+o/p:
+failed
