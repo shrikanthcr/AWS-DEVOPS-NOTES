@@ -1,0 +1,15 @@
+#!/bin/bash
+sudo su -
+sudo yum update -y
+sudo yum install java-17 -y
+sudo yum install git  -y
+sudo yum install maven -y
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+  sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+amazon-linux-extras install epel -y
+yum install jenkins
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins
+
+link: https://dev.to/aws-builders/installing-jenkins-on-amazon-ec2-491e
